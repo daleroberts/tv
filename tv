@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """
-Unicode image viewer.
+tv ("textview"): Quickly view (satellite) imagery directly in your terminal.
+
+Dale Roberts <dale.o.roberts@gmail.com>
+
+http://www.github.com/daleroberts/tv
 """
 import numpy as np
 import shutil
@@ -210,8 +214,11 @@ def show_fd(fd, w=80, b=None, r='average', srcwin=None, slowout=False):
 
 
 def show(fn, *args, **kwargs):
-    if os.path.exists(fn):
+    try:
         show_fd(gdal.Open(fn), *args, **kwargs)
+    except RuntimeError as e:
+        print(e)
+        sys.exit(1)
 
 
 def show_url(url, *args, **kwargs):
