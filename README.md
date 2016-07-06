@@ -9,6 +9,8 @@ It is built upon the wonderful [GDAL](http://www.gdal.org) library so it is able
   * `-srcwin xoff yoff xsize ysize` to view a subset of the image,
   * `-r` to specify the subsampling algorithm (`nearest`, `bilinear`, `cubic`, `cubicspline`, `lanczos`, `average`, `mode`).
 
+It is completely implemented in Python 3 using Numpy and GDAL 2.0.
+
 My rendering approach is different from other tools such as [hiptext](https://github.com/jart/hiptext) as I use more unicode characters and [true color](https://gist.github.com/XVilka/8346728). This means that you get amazingly better results as long as your terminal and font supports it.
 
 Here is a comparison between **hiptext** (left) and **tv** (right) using their [benchmark image](https://github.com/jart/hiptext/blob/master/obama.jpg) of Barack Obama.
