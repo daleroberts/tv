@@ -24,25 +24,10 @@ It can detect URLs on the standard input which allows you to use it in combinati
 
 <img src="https://github.com/daleroberts/tv/blob/master/docs/urls_stdin.png" width="700">
 
-
-## Examples
-
-### Open directly from URL
+You can also pass directly an URL on the command line.
 
 <img src="https://github.com/daleroberts/tv/blob/master/docs/urls.png" width="750">
 
-### Open directly from URLs on stdin
+If you have a image with more than 3 bands (channels), you can specify the ordering and the bands that you would like to load into the RGB channels.
 
-<img src="https://github.com/daleroberts/tv/blob/master/docs/urls_stdin.png" width="750">
-
-### Different band combinations
-
-<img src="https://github.com/daleroberts/tv/blob/master/docs/landsat_bands.png" width="750">
-
-### Subset the data
-
-<img src="https://github.com/daleroberts/tv/blob/master/docs/subset_obama.png" width="750">
-
-## Comparison
-
-### tv vs hiptext
+<img src="https://github.com/daleroberts/tv/blob/master/docs/landsat_bands.png" width="800">
