@@ -173,6 +173,7 @@ def show(rbs, xoff, yoff, ow, oh, w, h, r, slowout):
         print('incorrect srcwin')
         sys.exit(1)
 
+    hs, ws = 8, 4
     out = bytearray((img.shape[0] + 1) * (img.shape[1] + 1))
     for si in range(0, img.shape[0], hs):
         lastfg, lastbg = '', ''
