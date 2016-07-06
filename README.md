@@ -11,7 +11,7 @@ It is built upon the wonderful [GDAL](http://www.gdal.org) library so it is able
 
 My rendering approach is different from other tools such as [hiptext](https://github.com/jart/hiptext) as I use more unicode characters and true colors. This means that you get amazingly better results (as long as your terminal supports it).
 
-Here is a comparison between **hiptext** (left) and **tv** (right):
+Here is a comparison between **hiptext** (left) and **tv** (right) using their example image of [Barack Obama](https://github.com/jart/hiptext/blob/master/obama.jpg).
 
 <img src="https://github.com/daleroberts/tv/blob/master/docs/hiptext_obama.png" width="400">
 <img src="https://github.com/daleroberts/tv/blob/master/docs/tv_obama.png" width="400">
