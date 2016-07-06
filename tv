@@ -258,4 +258,4 @@ if __name__ == '__main__':
                 show(img, **kwargs)
 
     except KeyboardInterrupt:
-        print(RESET)
+        print(RESET.decode('utf-8'))

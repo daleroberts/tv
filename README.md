@@ -3,7 +3,11 @@
 
 <img src="https://github.com/daleroberts/tv/blob/master/docs/earth.png" width="800">
 
-It is built upon the wonderful [GDAL](http://www.gdal.org) library so it is able to handle a large variety of image formats (e.g., PNG, Jpeg, NetCDF) and subsample the image as it reads from disk so it can manage very large files. It has the ability to read filenames (or URLs) from `stdin` and load files directly from URLs without writing locally to disk.
+It is built upon the wonderful [GDAL](http://www.gdal.org) library so it is able to handle a large variety of image formats (e.g., PNG, Jpeg, NetCDF) and subsample the image as it reads from disk so it can manage very large files. It has the ability to read filenames (or URLs) from `stdin` and load files directly from URLs without writing locally to disk. Command line options are styled after `gdal_translate` such as:
+
+  *  `-b` to specify the bands (and ordering) to use,
+  * `-srcwin xoff yoff xsize ysize` to view a subset of the image,
+  * `-r` to specify the subsampling algorithm (nearest,bilinear,cubic,cubicspline,lanczos,average,mode).
 
 ## Examples
 
