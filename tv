@@ -267,13 +267,12 @@ if __name__ == '__main__':
     parser.add_argument('-unicodes', type=int, default=len(CHARS))
     parser.add_argument('-srcwin', nargs=4,
                         metavar=('xoff', 'yoff', 'xsize', 'ysize'), type=int)
-
-    args = parser.parse_args()
-    kwargs = vars(args)
+    kwargs = vars(parser.parse_args())
 
     imgs = kwargs.pop('img')
     urls = kwargs.pop('urls')
     nofn = kwargs.pop('nofn') or (imgs[0] != '-' and len(imgs) == 1)
+    stack = kwargs.pop('stack')
 
     maxc = max(1, min(kwargs.pop('unicodes'), len(CHARS)))
     CHARS = CHARS[:maxc]
@@ -283,7 +282,7 @@ if __name__ == '__main__':
         if not sys.stdin.isatty() or imgs[0] == '-':
             imgs = [line.strip() for line in sys.stdin.readlines()]
 
-        if args.stacked:
+        if stack:
             show_stacked(imgs, **kwargs)
             sys.exit(0)
 
