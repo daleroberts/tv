@@ -203,7 +203,7 @@ def show_stacked(imgs, w=80, b=None, r='average', srcwin=None, slowout=False):
     if srcwin is not None:
         xoff, yoff, ow, oh = srcwin
     else:
-        xoff, yoff, ow, oh = 0, 0, fd[0].RasterXSize, fd[0].RasterYSize
+        xoff, yoff, ow, oh = 0, 0, fds[0].RasterXSize, fds[0].RasterYSize
 
     hs, ws = 8, 4
     w, h = w * ws, round((oh / ow) * (w * ws) / hs) * hs
