@@ -36,7 +36,11 @@ If you have a image with more than 3 bands (channels), you can specify the order
 
 <img src="https://github.com/daleroberts/tv/blob/master/docs/landsat_bands.png" width="800">
 
-It's a bit rough but if you really want to throttle back the number of unicode characters used, you can do it with a command line option. The following example shows how to use only the block character or a half-height character as well. This helps if your font doesn't support certain unicode characters.
+You can stack multiple images into the red/green/blue channel or handle multiple subsets of a NetCDF file.
+
+<img src="https://github.com/daleroberts/tv/blob/master/docs/stack.png" width="800">
+
+If you really want to throttle back the number of unicode characters used (e.g., if your font or terminal doesn't support many unicode characters), you can do it with a command line option. The following example shows how to use only the block character or a half-height character as well.
 
 <img src="https://github.com/daleroberts/tv/blob/master/docs/unicodes.png" width="800">
 
