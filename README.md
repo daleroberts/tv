@@ -20,7 +20,7 @@ You can easily zoom in to get better detail or make the output smaller.
 
 <img src="https://github.com/daleroberts/tv/blob/master/docs/obama_eye.png" width="800">
 
-You can quickly view very large files over low-bandwidth connections (e.g., mobile). For example, a 46GB single-band 176000 x 140000 pixel image using nearest neighbour subsampling located on the [raijin supercomputer](http://www.nci.org.au).
+You can quickly view very large files over low-bandwidth connections (e.g., mobile). For example, visualising a 46GB single-band 176000 x 140000 pixel image using nearest neighbour subsampling located on the [raijin supercomputer](http://nci.org.au/systems-services/national-facility/peak-system/raijin/).
 
 <img src="https://github.com/daleroberts/tv/blob/master/docs/bigfile.png" width="800">
 
@@ -47,3 +47,15 @@ parallel --willcite --tty --header : tv -w 60 -urls http://himawari8-dl.nict.go.
 ```
 
 <img src="https://github.com/daleroberts/tv/blob/master/docs/anim.gif" width="600">
+
+## FAQ
+
+### How do I install it?
+
+It is just a single-file script so all you'll need to do it put it in your `PATH`.
+
+Dependencies are Python 3, GDAL 2.0, and Numpy. I've installed GDAL 2.0 on MacOS using [homebrew](http://brew.sh) and the [osgeo tap](https://github.com/OSGeo/homebrew-osgeo4mac). On Linux, I typically install GDAL 2.0 by hand-compiling it.
+
+### What about `imgcat`?
+
+[imgcat](https://www.iterm2.com/documentation-images.html) is nice but it needs to (1) be a file format that MacOS supports (2) transfer the full file across the connection encoded as Base64.
