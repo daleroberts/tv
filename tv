@@ -161,25 +161,8 @@ def approx(block):
         return (termfg(fgcolor), termbg(bgcolor), bytes(c, 'utf-8'))
 
 
-def show_fd(fd, w=80, b=None, r='average', srcwin=None, slowout=False):
-    if b is None:
-        b = [1, 2, 3]
-
-    rc = fd.RasterCount
-
-    if rc == 1:
-        rbs = [fd.GetRasterBand(1) for i in range(3)]
-    else:
-        rbs = [fd.GetRasterBand(i) for i in b]
-
-    if srcwin is not None:
-        xoff, yoff, ow, oh = srcwin
-    else:
-        xoff, yoff, ow, oh = 0, 0, fd.RasterXSize, fd.RasterYSize
-
+def show(rbs, xoff, yoff, w, h, r, slowout):
     try:
-        hs, ws = 8, 4
-        w, h = w * ws, round((oh / ow) * (w * ws) / hs) * hs
         img = np.empty((h, w, len(rbs)), dtype=np.uint8)
         for i, b in enumerate(rbs):
             bnd = b.ReadAsArray(xoff, yoff, ow, oh, buf_xsize=w,
@@ -213,7 +196,44 @@ def show_fd(fd, w=80, b=None, r='average', srcwin=None, slowout=False):
         os.write(1, out)  # faster
 
 
-def show(fn, *args, **kwargs):
+def show_stacked(imgs, w=80, b=None, r='average', srcwin=None, slowout=False):
+    fds = [gdal.Open(fd) for fd in imgs[:3]]
+    rbs = [fd.GetRasterBand(1) for fd in fds]
+
+    if srcwin is not None:
+        xoff, yoff, ow, oh = srcwin
+    else:
+        xoff, yoff, ow, oh = 0, 0, fd[0].RasterXSize, fd[0].RasterYSize
+
+    hs, ws = 8, 4
+    w, h = w * ws, round((oh / ow) * (w * ws) / hs) * hs
+
+    show(rbs, xoff, yoff, w, h, r, slowout)
+
+
+def show_fd(fd, w=80, b=None, r='average', srcwin=None, slowout=False):
+    if b is None:
+        b = [1, 2, 3]
+
+    rc = fd.RasterCount
+
+    if rc == 1:
+        rbs = [fd.GetRasterBand(1) for i in range(3)]
+    else:
+        rbs = [fd.GetRasterBand(i) for i in b]
+
+    if srcwin is not None:
+        xoff, yoff, ow, oh = srcwin
+    else:
+        xoff, yoff, ow, oh = 0, 0, fd.RasterXSize, fd.RasterYSize
+
+    hs, ws = 8, 4
+    w, h = w * ws, round((oh / ow) * (w * ws) / hs) * hs
+
+    show(rbs, xoff, yoff, w, h, r, slowout)
+
+
+def show_fn(fn, *args, **kwargs):
     try:
         show_fd(gdal.Open(fn), *args, **kwargs)
     except RuntimeError as e:
@@ -227,9 +247,11 @@ def show_url(url, *args, **kwargs):
         mmapfn = "/vsimem/" + uuid4().hex
         gdal.FileFromMemBuffer(mmapfn, urlfd.read())
         show_fd(gdal.Open(mmapfn), *args, **kwargs)
-        gdal.Unlink(mmapfn)
     except URLError as e:
         print(e)
+    finally:
+        gdal.Unlink(mmapfn)
+
 
 if __name__ == '__main__':
     import argparse
@@ -237,6 +259,7 @@ if __name__ == '__main__':
     parser.add_argument('-w', type=int, default=shutil.get_terminal_size()[0])
     parser.add_argument('-b', action='append', type=int)
     parser.add_argument('-r', choices=SAMPLING.keys(), default='average')
+    parser.add_argument('-stack', action='store_true')
     parser.add_argument('-urls', action='store_true')
     parser.add_argument('-nofn', action='store_true')
     parser.add_argument('-slowout', action='store_true')
@@ -245,7 +268,8 @@ if __name__ == '__main__':
     parser.add_argument('-srcwin', nargs=4,
                         metavar=('xoff', 'yoff', 'xsize', 'ysize'), type=int)
 
-    kwargs = vars(parser.parse_args())
+    args = parser.parse_args()
+    kwargs = vars(args)
 
     imgs = kwargs.pop('img')
     urls = kwargs.pop('urls')
@@ -259,6 +283,10 @@ if __name__ == '__main__':
         if not sys.stdin.isatty() or imgs[0] == '-':
             imgs = [line.strip() for line in sys.stdin.readlines()]
 
+        if args.stacked:
+            show_stacked(imgs, **kwargs)
+            sys.exit(0)
+
         for img in imgs:
             if urls:
                 for url in re.findall(RE_URL, img):
@@ -268,7 +296,7 @@ if __name__ == '__main__':
             else:
                 if not nofn:
                     print(img)
-                show(img, **kwargs)
+                show_fn(img, **kwargs)
 
     except KeyboardInterrupt:
         print(RESET.decode('utf-8'))
