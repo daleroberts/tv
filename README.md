@@ -22,7 +22,7 @@ You can easily zoom in to get better detail or make the output smaller.
 
 It can detect URLs on the standard input which allows you to use it in combination with other tools such as [landsat-util](https://github.com/developmentseed/landsat-util) to quickly visualise thumbnails before you perform a full download.
 
-<img src="https://github.com/daleroberts/tv/blob/master/docs/urls_stdin.png" width="800">
+<img src="https://github.com/daleroberts/tv/blob/master/docs/urls_stdin.png" width="700">
 
 
 
