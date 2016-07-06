@@ -1,5 +1,5 @@
 
-**tv** ("textview") is a tool to quickly view high-resolution multi-band imagery directly in your terminal. It was designed for working with (very large) satellite imagery data over a low-bandwidth connection. For example, it is able to directly visualise a Himawari 8 (11K x 11K pixel) image of the Earth directly from an URL:
+**tv** ("textview") is a small tool to quickly view high-resolution multi-band imagery directly in your terminal. It was designed for working with (very large) satellite imagery data over a low-bandwidth connection. For example, it is able to directly visualise a Himawari 8 (11K x 11K pixel) image of the Earth directly from an URL:
 
 <img src="https://github.com/daleroberts/tv/blob/master/docs/earth.png" width="800">
 
@@ -19,6 +19,12 @@ My rendering approach is different from other tools such as [hiptext](https://gi
 You can easily zoom in to get better detail or make the output smaller.
 
 <img src="https://github.com/daleroberts/tv/blob/master/docs/obama_eye.png" width="800">
+
+It can detect URLs on the standard input which allows you to use it in combination with other tools such as [landsat-util](https://github.com/developmentseed/landsat-util) to quickly visualise thumbnails before you perform a full download.
+
+<img src="https://github.com/daleroberts/tv/blob/master/docs/urls_stdin.png" width="800">
+
+
 
 ## Examples
 

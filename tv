@@ -240,7 +240,7 @@ if __name__ == '__main__':
 
     imgs = kwargs.pop('img')
     urls = kwargs.pop('urls')
-    nofn = kwargs.pop('nofn') or (len(imgs) == 1)
+    nofn = kwargs.pop('nofn') or (imgs[0] != '-' and len(imgs) == 1)
 
     try:
         if not sys.stdin.isatty() or imgs[0] == '-':
