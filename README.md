@@ -1,6 +1,6 @@
 **tv**: quickly view (satellite) imagery directly in your terminal
 
-<img style="float:right" src="https://github.com/daleroberts/tv/blob/master/docs/earth.png" width="600">
+<img align="right" src="https://github.com/daleroberts/tv/blob/master/docs/earth.png" width="600">
 
 
 ## Examples
