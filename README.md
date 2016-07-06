@@ -35,3 +35,11 @@ If you have a image with more than 3 bands (channels), you can specify the order
 It's a bit rough but if you really want to throttle back the number of unicode characters used, you can do it with a command line option. The following example shows how to use only the block character or a half-height character as well. This helps if your font doesn't support certain unicode characters.
 
 <img src="https://github.com/daleroberts/tv/blob/master/docs/unicodes.png" width="800">
+
+Using a GNU parallel, you can do silly things like create an animation from the Himawari-8 satellite.
+
+```
+parallel --willcite --tty --header : tv -w 60 -urls http://himawari8-dl.nict.go.jp/himawari8/img/D531106/thumbnail/550/2016/06/{dy}/{hr}{tenmin}000_0_0.png  ::: dy 06 ::: hr 06 ::: tenmin {0..5}
+```
+
+<img src="https://github.com/daleroberts/tv/blob/master/docs/anim.gif" width="600">
