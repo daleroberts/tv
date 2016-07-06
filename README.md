@@ -40,7 +40,7 @@ It's a bit rough but if you really want to throttle back the number of unicode c
 
 <img src="https://github.com/daleroberts/tv/blob/master/docs/unicodes.png" width="800">
 
-Using a GNU parallel, you can do silly things like create an animation from the Himawari-8 satellite.
+Using a GNU parallel, you can do silly things like create a low-fi animation of the Earth viewed from the Himawari-8 satellite.
 
 ```
 parallel --willcite --tty --header : tv -w 60 -urls http://himawari8-dl.nict.go.jp/himawari8/img/D531106/thumbnail/550/2016/06/{dy}/{hr}{tenmin}000_0_0.png  ::: dy 06 ::: hr 06 ::: tenmin {0..5}
