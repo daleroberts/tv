@@ -161,7 +161,7 @@ def approx(block):
         return (termfg(fgcolor), termbg(bgcolor), bytes(c, 'utf-8'))
 
 
-def show(rbs, xoff, yoff, w, h, r, slowout):
+def show(rbs, xoff, yoff, ow, oh, w, h, r, slowout):
     try:
         img = np.empty((h, w, len(rbs)), dtype=np.uint8)
         for i, b in enumerate(rbs):
@@ -208,7 +208,7 @@ def show_stacked(imgs, w=80, b=None, r='average', srcwin=None, slowout=False):
     hs, ws = 8, 4
     w, h = w * ws, round((oh / ow) * (w * ws) / hs) * hs
 
-    show(rbs, xoff, yoff, w, h, r, slowout)
+    show(rbs, xoff, yoff, ow, oh, w, h, r, slowout)
 
 
 def show_fd(fd, w=80, b=None, r='average', srcwin=None, slowout=False):
@@ -230,7 +230,7 @@ def show_fd(fd, w=80, b=None, r='average', srcwin=None, slowout=False):
     hs, ws = 8, 4
     w, h = w * ws, round((oh / ow) * (w * ws) / hs) * hs
 
-    show(rbs, xoff, yoff, w, h, r, slowout)
+    show(rbs, xoff, yoff, ow, oh, w, h, r, slowout)
 
 
 def show_fn(fn, *args, **kwargs):
