@@ -1,7 +1,7 @@
-**tv**: quickly view (satellite) imagery directly in your terminal
 
-<img align="right" src="https://github.com/daleroberts/tv/blob/master/docs/earth.png" width="600">
+**tv** is a tool to quickly view high-resolution multi-band imagery directly in your terminal. It was designed and is particularly useful for satellite imagery data.
 
+<img src="https://github.com/daleroberts/tv/blob/master/docs/earth.png" width="800">
 
 ## Examples
 
