@@ -16,9 +16,9 @@ My rendering approach is different from other tools such as [hiptext](https://gi
 <img src="https://github.com/daleroberts/tv/blob/master/docs/hiptext_obama.png" width="400">
 <img src="https://github.com/daleroberts/tv/blob/master/docs/tv_obama.png" width="400">
 
-You can easily zoom in to get better detail.
+You can easily zoom in to get better detail or make the output smaller.
 
-<img src="https://github.com/daleroberts/tv/blob/master/docs/subset_obama.png" width="600">
+<img src="https://github.com/daleroberts/tv/blob/master/docs/obama_eye.png" width="800">
 
 ## Examples
 
