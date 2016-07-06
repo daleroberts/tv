@@ -16,13 +16,13 @@ gdal.UseExceptions()
 
 RESET = bytes('\u001b[0m', 'utf-8')
 QUANT = ' ░▒▓█'
-CHARS = ' ▁▂▃▄▅▆▇▊▌▎▖▗▘▚▝━┃┏┓┗┛┣┫┳┻╋╸╹╺╻╏──││╴╴╵╵╶╶╵╵⎢⎥⎺⎻⎼⎽▪▙▚▛▜▞▟'
+CHARS = ' ▄▁▂▃▅▆▇▊▌▎▖▗▘▚▝━┃┏┓┗┛┣┫┳┻╋╸╹╺╻╏──││╴╴╵╵╶╶╵╵⎢⎥⎺⎻⎼⎽▪▙▚▛▜▞▟'
 MASKS = [np.array([b == '1' for b in bits]) for bits in
          ['00000000000000000000000000000000',
+          '00000000000000001111111111111111',
           '00000000000000000000000000001111',
           '00000000000000000000000011111111',
           '00000000000000000000111111111111',
-          '00000000000000001111111111111111',
           '00000000000011111111111111111111',
           '00000000111111111111111111111111',
           '00001111111111111111111111111111',
@@ -230,17 +230,22 @@ if __name__ == '__main__':
     parser.add_argument('-w', type=int, default=shutil.get_terminal_size()[0])
     parser.add_argument('-b', action='append', type=int)
     parser.add_argument('-r', choices=SAMPLING.keys(), default='average')
-    parser.add_argument('-srcwin', nargs=4, metavar=('xoff',
-                                                     'yoff', 'xsize', 'ysize'), type=int)
     parser.add_argument('-urls', action='store_true')
     parser.add_argument('-nofn', action='store_true')
     parser.add_argument('-slowout', action='store_true')
     parser.add_argument('img', nargs='+')
+    parser.add_argument('-unicodes', type=int, default=100)
+    parser.add_argument('-srcwin', nargs=4,
+                        metavar=('xoff', 'yoff', 'xsize', 'ysize'), type=int)
     kwargs = vars(parser.parse_args())
 
     imgs = kwargs.pop('img')
     urls = kwargs.pop('urls')
     nofn = kwargs.pop('nofn') or (imgs[0] != '-' and len(imgs) == 1)
+
+    maxc = max(1, min(kwargs.pop('unicodes'), len(CHARS)))
+    CHARS = CHARS[:maxc]
+    MASKS = MASKS[:maxc]
 
     try:
         if not sys.stdin.isatty() or imgs[0] == '-':

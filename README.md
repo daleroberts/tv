@@ -1,5 +1,5 @@
 
-**tv** ("textview") is a small tool to quickly view high-resolution multi-band imagery directly in your terminal. It was designed for working with (very large) satellite imagery data over a low-bandwidth connection. For example, it is able to directly visualise a Himawari 8 (11K x 11K pixel) image of the Earth directly from an URL:
+**tv** ("textview") is a small tool to quickly view high-resolution multi-band imagery directly in your terminal. It was designed for working with (very large) satellite imagery data over a low-bandwidth connection. For example, you can directly visualise a Himawari 8 (11K x 11K pixel) image of the Earth directly from its URL:
 
 <img src="https://github.com/daleroberts/tv/blob/master/docs/earth.png" width="800">
 
@@ -9,7 +9,7 @@ It is built upon the wonderful [GDAL](http://www.gdal.org) library so it is able
   * `-srcwin xoff yoff xsize ysize` to view a subset of the image,
   * `-r` to specify the subsampling algorithm (`nearest`, `bilinear`, `cubic`, `cubicspline`, `lanczos`, `average`, `mode`).
 
-**tv** is completely implemented in Python 3 using Numpy and GDAL 2.0.
+**tv** is completely implemented in Python 3 using only Numpy and GDAL 2.0.
 
 My rendering approach is different from other tools such as [hiptext](https://github.com/jart/hiptext) as I use more unicode characters and [true color](https://gist.github.com/XVilka/8346728). This means that you get **amazingly better results** as long as your terminal and font supports it. Here is a comparison between **hiptext** (left) and **tv** (right) using their [benchmark image](https://github.com/jart/hiptext/blob/master/obama.jpg) of Barack Obama using the standard MacOS font 'Menlo Regular' at size 11 in [iTerm 2.0](https://www.iterm2.com/index.html).
 
@@ -31,3 +31,7 @@ You can also pass directly an URL on the command line.
 If you have a image with more than 3 bands (channels), you can specify the ordering and the bands that you would like to load into the RGB channels.
 
 <img src="https://github.com/daleroberts/tv/blob/master/docs/landsat_bands.png" width="800">
+
+It's a bit rough but if you really want to throttle back the number of unicode characters used, you can do it with a command line option. The following example shows how to use only the block character or a half-height character as well. This helps if your font doesn't support certain unicode characters.
+
+<img src="https://github.com/daleroberts/tv/blob/master/docs/unicodes.png" width="800">
