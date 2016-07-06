@@ -1,5 +1,5 @@
 
-**tv** is a tool to quickly view high-resolution multi-band imagery directly in your terminal. It was designed for working with (very large) satellite imagery data over a low-bandwidth connection.
+**tv** is a tool to quickly view high-resolution multi-band imagery directly in your terminal. It was designed for working with (very large) satellite imagery data over a low-bandwidth connection. For example, it is able to directly visualise a Himawari 8 (11K x 11K pixel) image of the Earth directly from an URL:
 
 <img src="https://github.com/daleroberts/tv/blob/master/docs/earth.png" width="800">
 
