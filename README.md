@@ -11,7 +11,7 @@ It is built upon the wonderful [GDAL](http://www.gdal.org) library so it is able
 
 **tv** is completely implemented in Python 3 using Numpy and GDAL 2.0.
 
-My rendering approach is different from other tools such as [hiptext](https://github.com/jart/hiptext) as I use more unicode characters and [true color](https://gist.github.com/XVilka/8346728). This means that you get amazingly better results as long as your terminal and font supports it. Here is a comparison between **hiptext** (left) and **tv** (right) using their [benchmark image](https://github.com/jart/hiptext/blob/master/obama.jpg) of Barack Obama.
+My rendering approach is different from other tools such as [hiptext](https://github.com/jart/hiptext) as I use more unicode characters and [true color](https://gist.github.com/XVilka/8346728). This means that you get **amazingly better results** as long as your terminal and font supports it. Here is a comparison between **hiptext** (left) and **tv** (right) using their [benchmark image](https://github.com/jart/hiptext/blob/master/obama.jpg) of Barack Obama using the standard MacOS font 'Menlo Regular' at size 11 in [iTerm 2.0](https://www.iterm2.com/index.html).
 
 <img src="https://github.com/daleroberts/tv/blob/master/docs/hiptext_obama.png" width="400">
 <img src="https://github.com/daleroberts/tv/blob/master/docs/tv_obama.png" width="400">
@@ -23,7 +23,6 @@ You can easily zoom in to get better detail or make the output smaller.
 It can detect URLs on the standard input which allows you to use it in combination with other tools such as [landsat-util](https://github.com/developmentseed/landsat-util) to quickly visualise thumbnails before you perform a full download.
 
 <img src="https://github.com/daleroberts/tv/blob/master/docs/urls_stdin.png" width="700">
-
 
 
 ## Examples
