@@ -1,5 +1,5 @@
 
-**tv** is a tool to quickly view high-resolution multi-band imagery directly in your terminal. It was designed for working with (very large) satellite imagery data over a low-bandwidth connection. For example, it is able to directly visualise a Himawari 8 (11K x 11K pixel) image of the Earth directly from an URL:
+**tv** ("textview") is a tool to quickly view high-resolution multi-band imagery directly in your terminal. It was designed for working with (very large) satellite imagery data over a low-bandwidth connection. For example, it is able to directly visualise a Himawari 8 (11K x 11K pixel) image of the Earth directly from an URL:
 
 <img src="https://github.com/daleroberts/tv/blob/master/docs/earth.png" width="800">
 
@@ -9,16 +9,14 @@ It is built upon the wonderful [GDAL](http://www.gdal.org) library so it is able
   * `-srcwin xoff yoff xsize ysize` to view a subset of the image,
   * `-r` to specify the subsampling algorithm (`nearest`, `bilinear`, `cubic`, `cubicspline`, `lanczos`, `average`, `mode`).
 
-It is completely implemented in Python 3 using Numpy and GDAL 2.0.
+**tv** is completely implemented in Python 3 using Numpy and GDAL 2.0.
 
-My rendering approach is different from other tools such as [hiptext](https://github.com/jart/hiptext) as I use more unicode characters and [true color](https://gist.github.com/XVilka/8346728). This means that you get amazingly better results as long as your terminal and font supports it.
-
-Here is a comparison between **hiptext** (left) and **tv** (right) using their [benchmark image](https://github.com/jart/hiptext/blob/master/obama.jpg) of Barack Obama.
+My rendering approach is different from other tools such as [hiptext](https://github.com/jart/hiptext) as I use more unicode characters and [true color](https://gist.github.com/XVilka/8346728). This means that you get amazingly better results as long as your terminal and font supports it. Here is a comparison between **hiptext** (left) and **tv** (right) using their [benchmark image](https://github.com/jart/hiptext/blob/master/obama.jpg) of Barack Obama.
 
 <img src="https://github.com/daleroberts/tv/blob/master/docs/hiptext_obama.png" width="400">
 <img src="https://github.com/daleroberts/tv/blob/master/docs/tv_obama.png" width="400">
 
-You can also easily zoom in to get better detail:
+You can easily zoom in to get better detail.
 
 <img src="https://github.com/daleroberts/tv/blob/master/docs/subset_obama.png" width="600">
 
