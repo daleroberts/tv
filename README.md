@@ -11,7 +11,12 @@ It is built upon the wonderful [GDAL](http://www.gdal.org) library so it is able
 
 **tv** is completely implemented in Python 3 using only Numpy and GDAL 2.0.
 
-My rendering approach is different from other tools such as [hiptext](https://github.com/jart/hiptext) as I use more unicode characters and [true color](https://gist.github.com/XVilka/8346728). This means that you get **amazingly better results** as long as your terminal and font supports it. Here is a comparison between **hiptext** (left) and **tv** (right) using their [benchmark image](https://github.com/jart/hiptext/blob/master/obama.jpg) of Barack Obama using the standard MacOS font 'Menlo Regular' at size 11 in [iTerm 2.0](https://www.iterm2.com/index.html).
+My rendering approach is different from other tools such as [hiptext](https://github.com/jart/hiptext) as I use:
+
+ * [Unicode 9.0 block characters](https://en.wikipedia.org/wiki/Block_Elements)
+ * [True color terminal support](https://gist.github.com/XVilka/8346728)
+
+This means that you get **amazingly better results** as long as your terminal and font supports it. Here is a comparison between **hiptext** (left) and **tv** (right) using their [benchmark image](https://github.com/jart/hiptext/blob/master/obama.jpg) of Barack Obama using the standard MacOS font 'Menlo Regular' at size 11 in [iTerm 2.0](https://www.iterm2.com/index.html).
 
 <img src="https://github.com/daleroberts/tv/blob/master/docs/hiptext_obama.png" width="400">
 <img src="https://github.com/daleroberts/tv/blob/master/docs/tv_obama.png" width="400">
@@ -63,3 +68,15 @@ Dependencies are Python 3, GDAL 2.0, and Numpy. I've installed GDAL 2.0 on MacOS
 ### What about `imgcat`?
 
 [imgcat](https://www.iterm2.com/documentation-images.html) is nice but it needs to (1) be a file format that MacOS supports (2) transfer the full file across the connection encoded as Base64.
+
+### Does it work on Windows using PuTTY?
+
+Yes if you install a [patched version](https://github.com/halcy/PuTTY) of PuTTY and use the [Deja Vu Mono Book](http://dejavu-fonts.org/wiki/Main_Page) which has support for Unicode 9.0 block characters.
+
+If you **do not** have administrator rights on you Windows machine, you can load the Deja Vu font for your login session using the [regfont](https://github.com/dcpurton/regfont) tool.
+
+If you use TMUX, you'll need version >2.2 for true color support. [Here](https://deductivelabs.com/en/2016/03/using-true-color-vim-tmux/) is a description on how to enable true color in TMUX. Personally, I've found that the best way is to place these lines at the end of your `.tmux.conf` file:
+```
+set -g default-terminal "screen-256color"
+set -ga terminal-overrides ",xterm-256color:Tc"
+```
