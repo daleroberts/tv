@@ -88,17 +88,26 @@ SAMPLING = {'nearest': gdal.GRIORA_NearestNeighbour,
             'mode': gdal.GRIORA_Mode}
 RE_URL = 'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
 NEWLINE = bytes('\n', 'utf-8')
-
+LVLS256 = [0x00, 0x5f, 0x87, 0xaf, 0xd7, 0xff]
+SNAP256 = [(x+y)/2 for x, y in zip(LVLS256, LVLS256[1:])]
 
 def termfg(rgb):
     r, g, b = rgb
     return bytes('\u001b[38;2;' + str(r) + ';' + str(g) + ';' + str(b) + 'm', 'utf-8')
 
-
 def termbg(rgb):
     r, g, b = rgb
     return bytes('\u001b[48;2;' + str(r) + ';' + str(g) + ';' + str(b) + 'm', 'utf-8')
 
+def termfg256(rgb):
+    r, g, b = [len([s for s in SNAP256 if s<x]) for x in rgb]
+    c = r*36 + g*6 + b + 16
+    return bytes('\033[38;5;' + str(c) + 'm', 'utf-8')
+
+def termbg256(rgb):
+    r, g, b = [len([s for s in SNAP256 if s<x]) for x in rgb]
+    c = r*36 + g*6 + b + 16
+    return bytes('\033[48;5;' + str(c) + 'm', 'utf-8')
 
 def typescale(data, dtype=np.uint8):
     if data.dtype == dtype:
@@ -189,7 +198,7 @@ def show(rbs, xoff, yoff, ow, oh, w, h, r, slowout):
             out.extend(char)
         out.extend(RESET)
         out.extend(NEWLINE)
-    out.extend(NEWLINE)
+    #out.extend(NEWLINE)
 
     if slowout:
         print(out.decode('utf-8'))
@@ -263,6 +272,7 @@ if __name__ == '__main__':
     parser.add_argument('-stack', action='store_true')
     parser.add_argument('-urls', action='store_true')
     parser.add_argument('-nofn', action='store_true')
+    parser.add_argument('-256', action='store_true')
     parser.add_argument('-slowout', action='store_true')
     parser.add_argument('img', nargs='+')
     parser.add_argument('-unicodes', type=int, default=len(CHARS))
@@ -278,6 +288,10 @@ if __name__ == '__main__':
     maxc = max(1, min(kwargs.pop('unicodes'), len(CHARS)))
     CHARS = CHARS[:maxc]
     MASKS = MASKS[:maxc]
+
+    if kwargs.pop('256', False):
+        termfg = termfg256
+        termbg = termbg256
 
     try:
         if not sys.stdin.isatty() or imgs[0] == '-':
