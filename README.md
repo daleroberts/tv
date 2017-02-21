@@ -63,17 +63,21 @@ parallel --willcite --tty --header : tv -w 60 -urls http://himawari8-dl.nict.go.
 
 It is just a single-file script so all you'll need to do it put it in your `PATH`.
 
-Dependencies are Python 3, GDAL 2.0, and Numpy. I've installed GDAL 2.0 on MacOS using [homebrew](http://brew.sh) and the [osgeo tap](https://github.com/OSGeo/homebrew-osgeo4mac). On Linux, I typically install GDAL 2.0 by hand-compiling it.
-
-### What about `imgcat`?
-
-[imgcat](https://www.iterm2.com/documentation-images.html) is nice but it needs to (1) be a file format that MacOS supports (2) transfer the full file across the connection encoded as Base64.
+Dependencies are Python 3, GDAL 2.0, and Numpy. To install these dependencies on a Mac with [homebrew](http://brew.sh) do:
+```
+brew install gdal --with-complete --without-python --HEAD
+brew install python3
+pip3 install numpy gdal
+```
+On Linux, I typically install GDAL 2.0 by hand-compiling it.
 
 ### Does it work on Windows using PuTTY?
 
 Yes if you install a [patched version](https://github.com/halcy/PuTTY) of PuTTY and use the [Deja Vu Mono Book](http://dejavu-fonts.org/wiki/Main_Page) which has support for Unicode 9.0 block characters.
 
 If you **do not** have administrator rights on you Windows machine, you can load the Deja Vu font for your login session using the [regfont](https://github.com/dcpurton/regfont) tool.
+
+### Does it support TMUX?
 
 If you use TMUX, you'll need version >2.2 for true color support. [Here](https://deductivelabs.com/en/2016/03/using-true-color-vim-tmux/) is a description on how to enable true color in TMUX. Personally, I've found that the best way is to place these lines at the end of your `.tmux.conf` file:
 ```
