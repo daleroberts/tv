@@ -63,13 +63,22 @@ parallel --willcite --tty --header : tv -w 60 -urls http://himawari8-dl.nict.go.
 
 It is just a single-file script so all you'll need to do it put it in your `PATH`.
 
-Dependencies are Python 3, GDAL 2.0, and Numpy. To install these dependencies on a Mac with [homebrew](http://brew.sh) do:
+Dependencies are Python 3, GDAL 2.0, and Numpy.
+
+To install these dependencies on a Mac with [homebrew](http://brew.sh) do:
 ```
 brew install gdal --with-complete --without-python --HEAD
 brew install python3
-pip3 install numpy gdal
+pip3 install -e git+https://github.com/daleroberts/tv
 ```
-On Linux, I typically install GDAL 2.0 by hand-compiling it.
+
+On Ubuntu Linux do:
+```
+sudo apt install python3 libgdal-dev
+export CPLUS_INCLUDE_PATH=/usr/include/gdal
+export C_INCLUDE_PATH=/usr/include/gdal
+pip3 install -e git+https://github.com/daleroberts/tv
+```
 
 ### Does it work on Windows using PuTTY?
 
