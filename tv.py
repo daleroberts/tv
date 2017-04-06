@@ -263,7 +263,8 @@ def show_url(url, *args, **kwargs):
         gdal.Unlink(mmapfn)
 
 
-if __name__ == '__main__':
+def main():
+    global RESET, QUANT, CHARS, MASKS, SAMPLING, RE_URL, NEWLINE, LVLS256, SNAP256
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument('-w', type=int, default=shutil.get_terminal_size()[0])
@@ -314,3 +315,7 @@ if __name__ == '__main__':
 
     except KeyboardInterrupt:
         print(RESET.decode('utf-8'))
+
+
+if __name__ == '__main__':
+    main()
