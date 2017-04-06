@@ -69,7 +69,7 @@ To install these dependencies on a Mac with [homebrew](http://brew.sh) do:
 ```
 brew install gdal --with-complete --without-python --HEAD
 brew install python3
-pip3 install -e git+https://github.com/daleroberts/tv
+pip3 install tv
 ```
 
 On Ubuntu Linux do:
@@ -77,7 +77,7 @@ On Ubuntu Linux do:
 sudo apt install python3 libgdal-dev
 export CPLUS_INCLUDE_PATH=/usr/include/gdal
 export C_INCLUDE_PATH=/usr/include/gdal
-pip3 install -e git+https://github.com/daleroberts/tv
+pip3 install tv
 ```
 
 ### Does it work on Windows using PuTTY?
