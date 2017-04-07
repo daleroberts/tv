@@ -61,14 +61,13 @@ parallel --willcite --tty --header : tv -w 60 -urls http://himawari8-dl.nict.go.
 
 ### How do I install it?
 
-It is just a single-file script so all you'll need to do it put it in your `PATH`.
-
-Dependencies are Python 3, GDAL 2.0, and Numpy.
+`tv` is now a Python package so you can install it directly using `pip` if you have GDAL 2.x installed.
 
 To install these dependencies on a Mac with [homebrew](http://brew.sh) do:
 ```
 brew install gdal --with-complete --without-python --HEAD
 brew install python3
+
 pip3 install tv
 ```
 
@@ -77,6 +76,7 @@ On Ubuntu Linux do:
 sudo apt install python3 libgdal-dev
 export CPLUS_INCLUDE_PATH=/usr/include/gdal
 export C_INCLUDE_PATH=/usr/include/gdal
+
 pip3 install tv
 ```
 
