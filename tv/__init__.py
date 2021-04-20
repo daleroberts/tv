@@ -8,12 +8,12 @@ http://www.github.com/daleroberts/tv
 """
 import numpy as np
 import shutil
-import gdal
 import sys
 import os
 import re
 
 from urllib.request import urlopen, URLError
+from osgeo import gdal
 from uuid import uuid4
 
 gdal.UseExceptions()
