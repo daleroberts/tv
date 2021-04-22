@@ -88,7 +88,7 @@ If you **do not** have administrator rights on you Windows machine, you can load
 
 ### Does it support TMUX?
 
-If you use TMUX, you'll need version >2.2 for true color support. [Here](https://deductivelabs.com/en/2016/03/using-true-color-vim-tmux/) is a description on how to enable true color in TMUX. Personally, I've found that the best way is to place these lines at the end of your `.tmux.conf` file:
+If you use TMUX, you'll need version >2.2 for true color support. [Here](https://deductivelabs.com/blog/tech/using-true-color-vim-tmux/) is a description on how to enable true color in TMUX. Personally, I've found that the best way is to place these lines at the end of your `.tmux.conf` file:
 ```
 set -g default-terminal "screen-256color"
 set -ga terminal-overrides ",xterm-256color:Tc"
